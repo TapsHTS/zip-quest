@@ -1,0 +1,17 @@
+{
+  "name": "Zip — La Quête des Chemins",
+  "short_name": "Zip",
+  "description": "Jeu de chemins façon Zip, avec XP, niveaux et profil.",
+  "lang": "fr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#101b3e",
+  "theme_color": "#101b3e",
+  "icons": [
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}
