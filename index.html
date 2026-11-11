@@ -113,7 +113,7 @@ button{font:inherit;color:inherit}
 }
 .ibtn svg{width:26px;height:26px}
 .ibtn:active{transform:translateY(3px);box-shadow:inset 0 2px 0 rgba(255,255,255,.6),0 1px 0 #2a1205}
-.ibtn .badge{
+.ibtn .badge,.btn.has-bd .badge,.shop-tabs .badge{
   position:absolute;right:-8px;top:-8px;min-width:22px;height:22px;padding:0 5px;border-radius:11px;
   background:linear-gradient(#d63530,#9e141c);border:2px solid var(--ink);color:#fff;font:400 13px 'Lilita One';
   display:grid;place-items:center;box-shadow:0 2px 0 #2a1205;
@@ -462,9 +462,55 @@ svg.chest.open .glow{opacity:1}
   .season-ic{width:58px;height:58px;font-size:34px}
   .quest .btn.sm,.tier .btn.sm{font-size:14px;padding:6px 9px 7px}
 }
+
+/* ---------- boutique à onglets, boutique du jour, décors légendaires ---------- */
+.off{display:none!important}
+.shop-tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:0 0 16px}
+.shop-tabs .chip{position:relative;font-size:16px;padding:7px 16px}
+.shop-tabs .badge{top:-10px;right:-10px;text-shadow:none}
+.legend-chip{background:linear-gradient(180deg,#5a2a7a,#2e1046);color:#ffe7a3}
+.legend-chip.on{background:linear-gradient(180deg,#ffe58a,#d99a1e 55%,#a8650c);color:#fff8e4;text-shadow:0 1px 0 #5a2a04}
+.btn.has-bd{position:relative}
+.btn.has-bd .badge{top:-10px;right:-10px;text-shadow:none}
+.daily-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;margin-bottom:4px}
+.daily-head b{display:block;font:400 19px 'Lilita One';color:#fff3cf}
+.daily-head small{color:var(--tan-d);font-size:13px}
+.daily-head .cd{font:400 20px 'Lilita One';color:var(--gold-l);white-space:nowrap;font-variant-numeric:tabular-nums}
+.item{position:relative}
+.rar{position:absolute;top:-9px;left:50%;transform:translateX(-50%);font:400 12px 'Lilita One';letter-spacing:.5px;padding:2px 10px;border-radius:10px;border:2px solid var(--ink);white-space:nowrap;color:#fff8e4}
+.rar.r-Commun{background:linear-gradient(#8a6a4a,#5e4028)}
+.rar.r-Rare{background:linear-gradient(#3a8ae0,#1c4f9e)}
+.rar.r-Épique{background:linear-gradient(#b05ae8,#6a24a8)}
+.decor-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.decor{position:relative;padding:10px;display:flex;flex-direction:column;gap:8px;border:3px solid var(--ink);border-radius:14px;
+  background:linear-gradient(160deg,#5a2a7a,#26103a);box-shadow:inset 0 0 0 2px #f2c14e,0 4px 0 #160a20}
+.decor .shot{position:relative;display:block;width:100%;aspect-ratio:16/9;border-radius:9px;overflow:hidden;border:2px solid var(--ink);cursor:zoom-in;padding:0;background:#120a18}
+.decor .shot img{width:100%;height:100%;object-fit:cover;display:block}
+.decor .shot::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(255,240,190,.35) 50%,transparent 65%);background-size:250% 100%;animation:sheen 3.5s ease-in-out infinite}
+@keyframes sheen{0%{background-position:120% 0}60%,100%{background-position:-120% 0}}
+.decor .tag{position:absolute;top:8px;left:8px;font:400 12px 'Lilita One';letter-spacing:1px;padding:2px 9px;border-radius:9px;border:2px solid var(--ink);color:#5a2a04;background:linear-gradient(#fff0a8,#f2b445)}
+.decor b{font:400 19px 'Lilita One';color:#fff3cf;line-height:1.1}
+.decor small{color:#e6cdf2;font-size:13px;line-height:1.35;min-height:2.7em}
+.decor .btn{width:100%}
+.decor.none{background:linear-gradient(160deg,#2a3a6a,#101838);box-shadow:inset 0 0 0 2px #8aa0e0,0 4px 0 #080c1c}
+.decor.none .shot{background:radial-gradient(500px 280px at 50% -10%,#2c3f7c,transparent 62%),linear-gradient(180deg,#101b3e,#070d20)}
+.decor.none .shot::after{display:none}
+.decor.eq{box-shadow:inset 0 0 0 2px #fff2b8,0 0 0 3px #f2b445,0 4px 0 #160a20}
+.prev-big{width:100%;border-radius:12px;border:3px solid var(--ink);display:block;margin-bottom:14px}
+.season-t .btn{margin-left:auto;order:2;font-size:14px;padding:6px 12px 7px}
+.tier.big{background:linear-gradient(180deg,#7a3a12,#4a1f08);box-shadow:inset 0 0 0 2px #f2b445,inset 0 3px 8px rgba(0,0,0,.45)}
+.tier.big .tl{color:#ffe7a3}
+#decor{position:fixed;inset:0;z-index:-1;background:#070d20 var(--dl) center/cover no-repeat;opacity:0;transition:opacity .7s ease}
+#decor.on{opacity:1}
+#decor::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,rgba(0,0,0,.08),rgba(0,0,0,.5)),linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.25))}
+@media (orientation:portrait){#decor{background-image:var(--dp)}}
+html.has-decor body{background:transparent}
+html.has-decor body::before{display:none}
+@media (max-width:480px){.decor-grid{grid-template-columns:1fr}.shop-tabs .chip{font-size:15px;padding:7px 12px}}
 </style>
 </head>
 <body>
+<div id="decor" aria-hidden="true"></div>
 
 <!-- Icônes -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -506,7 +552,7 @@ svg.chest.open .glow{opacity:1}
         <div class="plaque">MENU</div>
         <button class="btn" data-go="modes">JOUER</button>
         <button class="btn" data-go="profile">PROFIL</button>
-        <button class="btn" data-go="shop">BOUTIQUE</button>
+        <button class="btn has-bd" data-go="shop">BOUTIQUE<em class="badge" id="bdShop"></em></button>
         <button class="btn" data-go="options">OPTIONS</button>
         <div class="quick">
           <div class="ctrl"><button class="ibtn" data-go="quests" title="Quêtes"><span>📜</span><em class="badge" id="bdQuests"></em></button>Quêtes</div>
@@ -594,8 +640,8 @@ svg.chest.open .glow{opacity:1}
     <div class="panel wood sub-panel">
       <div class="plaque">SAISON</div>
       <div class="season-head inset" id="seasonHead"></div>
-      <p class="small-note" style="margin:10px 0 4px">Chaque point d'XP gagné compte aussi pour la saison, et chaque quête réclamée en rapporte 40 de plus.</p>
-      <div class="section-t">Paliers</div>
+      <p class="small-note" style="margin:10px 0 4px">100 paliers par mois. Chaque point d'XP gagné compte pour la saison ; chaque quête réclamée en rapporte 40 de plus et le défi du jour 100.</p>
+      <div class="section-t season-t">Paliers <button class="btn sm" id="seasonAll">Tout réclamer</button></div>
       <div class="tiers" id="seasonTiers"></div>
     </div>
   </section>
@@ -631,12 +677,30 @@ svg.chest.open .glow{opacity:1}
   <section class="screen" id="s-shop">
     <div class="panel wood sub-panel">
       <div class="plaque">BOUTIQUE</div>
-      <div class="section-t" style="margin-top:4px">Traînées</div>
-      <div class="shop-grid" id="shopSkins"></div>
-      <div class="section-t">Plateaux</div>
-      <div class="shop-grid" id="shopThemes"></div>
-      <div class="section-t">Indices</div>
-      <div class="shop-grid" id="shopHints"></div>
+      <div class="shop-tabs" id="shopTabs" role="tablist">
+        <button class="chip on" data-tab="fixed" role="tab">Boutique</button>
+        <button class="chip" data-tab="daily" role="tab">Du jour <em class="badge" id="bdShopTab"></em></button>
+        <button class="chip legend-chip" data-tab="legend" role="tab">Légendaire</button>
+      </div>
+      <div id="shop-fixed">
+        <div class="section-t" style="margin-top:4px">Traînées</div>
+        <div class="shop-grid" id="shopSkins"></div>
+        <div class="section-t">Plateaux</div>
+        <div class="shop-grid" id="shopThemes"></div>
+        <div class="section-t">Indices</div>
+        <div class="shop-grid" id="shopHints"></div>
+      </div>
+      <div id="shop-daily" class="off">
+        <div class="daily-head inset" id="dailyHead"></div>
+        <div class="section-t">Traînées du jour</div>
+        <div class="shop-grid" id="dailySkins"></div>
+        <div class="section-t">Plateaux du jour</div>
+        <div class="shop-grid" id="dailyThemes"></div>
+      </div>
+      <div id="shop-legend" class="off">
+        <p class="small-note" style="margin:0 0 14px">Des décors illustrés qui remplacent le ciel nocturne derrière tout le jeu. Payables en gemmes uniquement.</p>
+        <div class="decor-grid" id="shopDecors"></div>
+      </div>
     </div>
   </section>
 
@@ -695,6 +759,7 @@ svg.chest.open .glow{opacity:1}
    ===================================================== */
 const KEY = 'zipquest_profile_v1';
 const $ = id => document.getElementById(id);
+/*GEN-BEGIN*/
 let RNG = Math.random;
 const rnd = n => Math.floor(RNG() * n);
 function seeded(str){
@@ -703,6 +768,7 @@ function seeded(str){
   let a = h >>> 0;
   return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
 }
+/*GEN-END*/
 const pad2 = n => String(n).padStart(2,'0');
 const dkey = (d = new Date()) => `${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}`;
 const yesterday = () => { const d = new Date(); d.setDate(d.getDate()-1); return dkey(d); };
@@ -758,14 +824,79 @@ const SEASON_SKINS = SEASONS.map((s,m) => ({id:'sk-s'+m, name:s[0], c1:s[2][0], 
 const SEASON_THEMES = SEASONS.map((s,m) => ({id:'th-s'+m, name:s[0], c1:s[3][0], c2:s[3][1], bg:s[3][2], dark:!!s[3][3], src:'season'}));
 const ALL_SKINS = [...SKINS, ...CHEST_SKINS, ...SEASON_SKINS];
 const ALL_THEMES = [...THEMES, ...CHEST_THEMES, ...SEASON_THEMES];
-const getSkin = id => ALL_SKINS.find(s => s.id === id) || SKINS[0];
-const getTheme = id => ALL_THEMES.find(s => s.id === id) || THEMES[0];
+const ownedDaily = k => (typeof P !== 'undefined' && P.dailyItems && P.dailyItems[k]) || [];
+const getSkin = id => ALL_SKINS.find(s => s.id === id) || ownedDaily('skins').find(s => s.id === id) || SKINS[0];
+const getTheme = id => ALL_THEMES.find(s => s.id === id) || ownedDaily('themes').find(s => s.id === id) || THEMES[0];
 
-const TIER_XP = 150;
-const TIERS = [
-  {t:'coins',v:100},{t:'gems',v:2},{t:'chest',v:1},{t:'hints',v:3},{t:'skin'},
-  {t:'coins',v:250},{t:'chest',v:1},{t:'gems',v:5},{t:'theme'},{t:'title'}
+// Passe de saison : 100 paliers. Exclusifs aux paliers 25 (traînée), 50 (plateau), 75 (avatar), 100 (titre).
+const TIER_XP = 180, TIER_N = 100, TIER_SKIN = 25, TIER_THEME = 50, TIER_AV = 75;
+function tierReward(i){
+  const k = i + 1;
+  if(k === TIER_N) return {t:'title'};
+  if(k === TIER_AV) return {t:'av'};
+  if(k === TIER_THEME) return {t:'theme'};
+  if(k === TIER_SKIN) return {t:'skin'};
+  if(k % 10 === 0) return {t:'chest', v: k >= 60 ? 2 : 1};
+  if(k % 5 === 0) return {t:'gems', v: 2 + Math.floor(k / 25)};
+  if(k % 7 === 0) return {t:'hints', v: 2};
+  return {t:'coins', v: 30 + Math.floor(k / 10) * 10};
+}
+const TIERS = Array.from({length:TIER_N}, (_,i) => tierReward(i));
+
+// Décors légendaires : illustrations pré-générées (bg/<id>-l.webp paysage, -p portrait, -t vignette)
+const DECORS = [
+  {id:'jungle',  name:'Temple de la jungle', desc:'Briques anciennes, lianes et lucioles', price:60},
+  {id:'desert',  name:'Dunes du crépuscule', desc:'Pyramides et soleil couchant',          price:60},
+  {id:'lave',    name:'Cœur du volcan',      desc:'Roches en fusion et braises',           price:80},
+  {id:'espace',  name:'Odyssée spatiale',    desc:'Planète à anneaux et nébuleuses',       price:100},
+  {id:'etoiles', name:'Voûte céleste',       desc:'Constellations et aurore boréale',      price:120},
 ];
+
+/* Boutique du jour : traînées et plateaux générés à partir de la date */
+function hsl(h, s, l){
+  h = ((h % 360) + 360) % 360; s /= 100; l /= 100;
+  const k = n => (n + h / 30) % 12, a = s * Math.min(l, 1 - l);
+  const c = n => Math.round(255 * (l - a * Math.max(-1, Math.min(k(n) - 3, 9 - k(n), 1)))).toString(16).padStart(2, '0');
+  return '#' + c(0) + c(8) + c(4);
+}
+const HUES = [[0,'grenat'],[12,'corail'],[24,'cuivre'],[36,'ambre'],[48,'miel'],[58,'soleil'],[78,'tilleul'],[100,'mousse'],[125,'jade'],[148,'émeraude'],
+  [168,'lagon'],[184,'turquoise'],[198,'glacier'],[214,'saphir'],[232,'cobalt'],[252,'indigo'],[270,'améthyste'],[287,'lilas'],[302,'orchidée'],[322,'fuchsia'],[340,'rubis'],[352,'cerise']];
+const hueWord = h => { h = ((h % 360) + 360) % 360; let w = HUES[0][1]; for(const [d, n] of HUES) if(h >= d - 6) w = n; return w; };
+const deOf = w => /^[aeiouyéèêâîôûh]/i.test(w) ? `d’${w}` : `de ${w}`;
+const SK_PRE = ['Éclat','Sillage','Comète','Souffle','Ruban','Étincelle','Rayon','Écho','Flamme','Fil'];
+const TH_PRE = ['Dalles','Jardin','Mosaïque','Marbre','Vitrail','Cristal','Velours','Galets','Porcelaine','Givre'];
+const roundTo = (v, n) => Math.round(v / n) * n;
+let SHOP_DAY = null;
+function dailyShop(d = dkey()){
+  if(SHOP_DAY && SHOP_DAY.date === d) return SHOP_DAY;
+  const r = seeded('shop-' + d), ri = (a, b) => a + Math.floor(r() * (b - a + 1)), rf = (a, b) => a + r() * (b - a);
+  const pick = (arr, used) => { let x; do { x = arr[ri(0, arr.length - 1)]; } while(used.has(x)); used.add(x); return x; };
+  const usedS = new Set(), usedT = new Set(), skins = [], themes = [];
+  let h0 = ri(0, 359);
+  for(let i = 0; i < 3; i++){
+    const h = h0 + i * ri(95, 140), style = ri(0, 3);
+    let c1, c2, h2;
+    if(style === 0){ h2 = h + rf(25, 60) * (r() < .5 ? -1 : 1); c1 = hsl(h, rf(75, 92), rf(40, 48)); c2 = hsl(h2, rf(85, 100), rf(60, 70)); }
+    else if(style === 1){ h2 = h + rf(110, 150) * (r() < .5 ? -1 : 1); c1 = hsl(h, rf(78, 92), rf(42, 50)); c2 = hsl(h2, rf(85, 100), rf(62, 70)); }
+    else if(style === 2){ h2 = h + rf(20, 40); c1 = hsl(h, rf(70, 85), rf(48, 55)); c2 = hsl(h2, rf(88, 100), rf(76, 84)); }
+    else { h2 = h + rf(60, 110); c1 = hsl(h, 100, rf(46, 52)); c2 = hsl(h2, 100, rf(56, 64)); }
+    const epic = style === 3 || r() < .2;
+    skins.push({id:`dj${d.replace(/-/g,'')}s${i}`, name:`${pick(SK_PRE, usedS)} ${deOf(hueWord(h))}`, c1, c2, src:'daily',
+      rar: epic ? 'Épique' : style === 1 ? 'Rare' : 'Commun', cur: epic ? 'gems' : 'coins', price: epic ? ri(4, 7) : roundTo(rf(120, 320), 10)});
+  }
+  h0 = ri(0, 359);
+  for(let i = 0; i < 3; i++){
+    const h = h0 + i * ri(100, 140), dark = r() < .28;
+    const t = dark
+      ? {c1:hsl(h, rf(32, 48), rf(30, 36)), c2:hsl(h + rf(-12, 12), rf(38, 52), rf(20, 25)), bg:hsl(h, rf(40, 55), rf(6, 9)), dark:true}
+      : {c1:hsl(h, rf(45, 72), rf(91, 95)), c2:hsl(h + rf(-15, 15), rf(35, 58), rf(77, 84)), bg:hsl(h, rf(38, 58), rf(11, 17))};
+    const epic = dark || r() < .2;
+    themes.push(Object.assign(t, {id:`dj${d.replace(/-/g,'')}t${i}`, name:`${pick(TH_PRE, usedT)} ${deOf(hueWord(h))}`, src:'daily',
+      rar: epic ? 'Épique' : 'Rare', cur: epic ? 'gems' : 'coins', price: epic ? ri(5, 9) : roundTo(rf(180, 420), 10)}));
+  }
+  SHOP_DAY = {date:d, skins, themes};
+  return SHOP_DAY;
+}
 const WHEEL = [
   {lab:'50',ic:'coin',t:'coins',v:50,w:20,col:'#d9303a'},
   {lab:'1',ic:'gem',t:'gems',v:1,w:14,col:'#e8a03a'},
@@ -804,6 +935,7 @@ const defaults = () => ({
   quests:{date:null, list:[], bonus:false},
   wheel:{last:null, total:0},
   season:{id:null, xp:0, claimed:[]},
+  decors:[], decor:null, dailyItems:{skins:[], themes:[]}, shopSeen:null,
   ta:{best:0, plays:0},
   opts:{sound:true, music:false, haptic:true, timer:true, special:true, size:'auto'}
 });
@@ -1042,6 +1174,7 @@ const cIco = n => `${n} ${icon('i-coin')}`, gIco = n => `${n} ${icon('i-gem')}`;
    chemin hamiltonien aléatoire (backbite) → rochers aux extrémités →
    portail (arête de téléportation) → murs → balises jusqu'à unicité
    ===================================================== */
+/*GEN-BEGIN*/
 function neighbors(N){
   const nb = [];
   for(let i=0;i<N*N;i++){
@@ -1181,6 +1314,15 @@ function genPuzzle(N, mods = {}){
   const clue = new Int16Array(n); sorted.forEach((i,k)=>clue[sol[i]]=k+1);
   return {N, n, L, sol, clue:Array.from(clue), K:sorted.length, adj, walls, hole:Array.from(hole), portal, partner:Array.from(partner), start:sol[0]};
 }
+// Grille du jour : déterministe à partir de la date (le même code tourne côté script de pré-calcul)
+function makeDaily(d){
+  RNG = seeded('zip-daily-' + d);
+  const mods = {holes: RNG() < .45, portal: RNG() < .45};
+  const g = genPuzzle(7, mods);
+  RNG = Math.random;
+  return g;
+}
+/*GEN-END*/
 
 /* =====================================================
    Partie
@@ -1191,11 +1333,7 @@ let DAILY = null;
 function dailyPuzzle(){
   const d = dkey();
   if(DAILY && DAILY.date === d) return DAILY;
-  RNG = seeded('zip-daily-' + d);
-  const mods = {holes: RNG() < .45, portal: RNG() < .45};
-  const g = genPuzzle(7, mods);
-  RNG = Math.random;
-  DAILY = Object.assign(g, {date:d});
+  DAILY = Object.assign(makeDaily(d), {date:d});
   return DAILY;
 }
 
@@ -1482,7 +1620,7 @@ function win(){
     P.daily.streak = P.daily.last === yesterday() ? P.daily.streak + 1 : 1;
     P.daily.best = Math.max(P.daily.best, P.daily.streak); P.daily.last = G.day; P.daily.total++;
     dailyBonus = {xp:120, coins:80, gems:2};
-    xp += 120; coins += 80; gems += 2;
+    xp += 120; coins += 80; gems += 2; addSeasonXP(100);
   }
   P.coins += coins; P.gems += gems;
   P.hist.unshift({N, time, stars, hints:G.hints, mode, d:Date.now()}); P.hist = P.hist.slice(0,8);
@@ -1758,6 +1896,15 @@ $('qChest').onclick = openChestModal;
 /* =====================================================
    HUD, badges, navigation
    ===================================================== */
+function applyDecor(){
+  const d = DECORS.find(x => x.id === P.decor && P.decors.includes(x.id)), el = $('decor');
+  if(!d){ el.classList.remove('on'); document.documentElement.classList.remove('has-decor'); return; }
+  const port = matchMedia('(orientation:portrait)').matches, url = `bg/${d.id}-${port ? 'p' : 'l'}.webp`;
+  el.style.setProperty('--dl', `url(bg/${d.id}-l.webp)`); el.style.setProperty('--dp', `url(bg/${d.id}-p.webp)`);
+  const img = new Image();
+  img.onload = img.onerror = () => { if(P.decor !== d.id) return; document.documentElement.classList.add('has-decor'); el.classList.add('on'); };
+  img.src = url;
+}
 function applyCosmetics(){
   const s = getSkin(P.skin), t = getTheme(P.theme), r = document.documentElement.style;
   r.setProperty('--skin', s.c1); r.setProperty('--skin2', s.c2); r.setProperty('--skin-soft', hexA(s.c1, t.dark ? .38 : .24));
@@ -1770,6 +1917,7 @@ function updateBadges(){
   const t = seasonTier(), cl = Array.from({length:t}, (_,i) => i).filter(i => !P.season.claimed.includes(i)).length;
   $('bdSeason').textContent = cl || '';
   $('qSeasonIc').textContent = seasonInfo().ic;
+  const ns = P.shopSeen !== dkey() ? 'Nouveau' : ''; $('bdShop').textContent = ns ? '!' : ''; $('bdShopTab').textContent = ns ? '!' : '';
 }
 function updateHUD(){
   const li = lvlInfo(P.xp);
@@ -1878,35 +2026,50 @@ function tierLabel(i){
   const t = TIERS[i], s = seasonInfo();
   if(t.t === 'coins') return `${cIco(t.v)} pièces`;
   if(t.t === 'gems') return `${gIco(t.v)} gemmes`;
-  if(t.t === 'chest') return `🧰 1 coffre`;
   if(t.t === 'hints') return `🔍 ${t.v} indices`;
+  if(t.t === 'chest') return `🧰 ${t.v} coffre${t.v > 1 ? 's' : ''}`;
   if(t.t === 'skin') return `✨ Traînée « ${s.skin.name} »`;
   if(t.t === 'theme') return `✨ Plateau « ${s.theme.name} »`;
-  return `👑 Titre « ${s.name} » + 1 coffre`;
+  if(t.t === 'av') return `✨ Avatar de saison ${s.ic}`;
+  return `👑 Titre « ${s.name} » + 3 coffres`;
+}
+function claimTier(i, s, quiet){
+  if(P.season.claimed.includes(i) || i >= seasonTier()) return false;
+  const t = TIERS[i];
+  P.season.claimed.push(i);
+  if(t.t === 'skin'){ if(!P.skins.includes(s.skin.id)) P.skins.push(s.skin.id); quiet || toast(`Traînée « ${s.skin.name} » débloquée`); }
+  else if(t.t === 'theme'){ if(!P.themes.includes(s.theme.id)) P.themes.push(s.theme.id); quiet || toast(`Plateau « ${s.theme.name} » débloqué`); }
+  else if(t.t === 'av'){ if(!P.avExtra.includes(s.ic)) P.avExtra.push(s.ic); quiet || toast(`Avatar ${s.ic} débloqué`); }
+  else if(t.t === 'title'){ if(!P.titlesExtra.includes(s.name)) P.titlesExtra.push(s.name); P.chests += 3; quiet || toast(`Titre « ${s.name} » + 3 coffres`); }
+  else { grant(t.t, t.v); quiet || toast('Récompense récupérée !'); }
+  return true;
 }
 function renderSeason(){
   const s = ensureSeason(), tier = seasonTier();
   const into = P.season.xp - tier*TIER_XP, days = Math.ceil((s.end - new Date()) / 86400000);
+  const pending = Array.from({length:tier}, (_,i) => i).filter(i => !P.season.claimed.includes(i));
   $('seasonHead').innerHTML = `<div class="season-ic">${s.ic}</div><div style="flex:1;min-width:0"><h3>${s.name}</h3><p>Se termine dans ${days} jour${days>1?'s':''} · palier ${tier} / ${TIERS.length}</p>
     <div class="xpbar"><b style="width:${tier >= TIERS.length ? 100 : into/TIER_XP*100}%"></b><em>${tier >= TIERS.length ? 'Saison terminée !' : `${into} / ${TIER_XP} XP de saison`}</em></div></div>`;
+  $('seasonAll').classList.toggle('off', pending.length < 2);
+  $('seasonAll').textContent = `Tout réclamer (${pending.length})`;
+  const big = t => t.t === 'skin' || t.t === 'theme' || t.t === 'av' || t.t === 'title';
   $('seasonTiers').innerHTML = TIERS.map((t,i) => {
     const reached = i < tier, claimed = P.season.claimed.includes(i);
-    return `<div class="tier inset ${reached ? '' : 'locked'}"><div class="tn">${i+1}</div><div class="tl">${tierLabel(i)}</div>
-      ${claimed ? '<div class="done-mark">✓</div>' : `<button class="btn sm" data-tier="${i}" ${reached ? '' : 'disabled'}>${reached ? 'Réclamer' : (i+1)*TIER_XP + ' XP'}</button>`}</div>`;
+    return `<div class="tier inset ${reached ? '' : 'locked'} ${big(t) ? 'big' : ''}" id="tier${i}"><div class="tn">${i+1}</div><div class="tl">${tierLabel(i)}</div>
+      ${claimed ? '<div class="done-mark">✓</div>' : `<button class="btn sm" data-tier="${i}" ${reached ? '' : 'disabled'}>${reached ? 'Réclamer' : ((i+1)*TIER_XP).toLocaleString('fr-FR') + ' XP'}</button>`}</div>`;
   }).join('');
   $('seasonTiers').querySelectorAll('[data-tier]').forEach(b => b.onclick = () => {
-    const i = +b.dataset.tier; if(P.season.claimed.includes(i) || i >= seasonTier()) return;
-    const t = TIERS[i];
-    P.season.claimed.push(i);
-    if(t.t === 'skin'){ if(!P.skins.includes(s.skin.id)) P.skins.push(s.skin.id); toast(`Traînée « ${s.skin.name} » débloquée`); }
-    else if(t.t === 'theme'){ if(!P.themes.includes(s.theme.id)) P.themes.push(s.theme.id); toast(`Plateau « ${s.theme.name} » débloqué`); }
-    else if(t.t === 'title'){ if(!P.titlesExtra.includes(s.name)) P.titlesExtra.push(s.name); P.chests++; toast(`Titre « ${s.name} » + 1 coffre`); }
-    else { grant(t.t, t.v); toast('Récompense récupérée !'); }
+    if(!claimTier(+b.dataset.tier, s)) return;
     sfx.buy(); buzz(20); confetti(25); afterEvent(); renderSeason();
   });
+  $('seasonAll').onclick = () => {
+    let n = 0; pending.forEach(i => { if(claimTier(i, s, true)) n++; });
+    if(!n) return;
+    toast(`${n} récompenses récupérées !`); sfx.buy(); buzz(30); confetti(50); afterEvent(); renderSeason();
+  };
+  const first = pending.length ? pending[0] : Math.min(tier, TIERS.length - 1);
+  requestAnimationFrame(() => { const el = $('tier' + first); if(el && first > 2) el.scrollIntoView({block:'center'}); });
 }
-
-/* Profil */
 function renderProfile(){
   const li = lvlInfo(P.xp);
   $('pAvEmoji').textContent = P.av; $('pLevel').textContent = li.L; $('pName').value = P.name;
@@ -1924,7 +2087,7 @@ function renderProfile(){
   const got = ACH.filter(a => P.ach[a.id]).length;
   $('pAchT').textContent = `Succès · ${got} / ${ACH.length}`;
   $('pAch').innerHTML = ACH.map(a => `<div class="ach-it inset ${P.ach[a.id] ? '' : 'locked'}"><div class="ic">${a.ic}</div><div><b>${a.name}</b><small>${a.desc}</small></div></div>`).join('');
-  const avs = [...AVATARS.map(a => ({e:a[0], lock: li.L < a[1] ? `Niv. ${a[1]}` : ''})), ...CHEST_AV.map(e => ({e, lock: P.avExtra.includes(e) ? '' : 'Coffre'}))];
+  const avs = [...AVATARS.map(a => ({e:a[0], lock: li.L < a[1] ? `Niv. ${a[1]}` : ''})), ...CHEST_AV.map(e => ({e, lock: P.avExtra.includes(e) ? '' : 'Coffre'})), ...P.avExtra.filter(e => !CHEST_AV.includes(e)).map(e => ({e, lock:''}))];
   $('pAvatars').innerHTML = avs.map(a => `<div class="av-opt ${a.e === P.av ? 'sel' : ''} ${a.lock ? 'locked' : ''}" data-av="${a.e}" data-lvl="${a.lock}"><span>${a.e}</span></div>`).join('');
   $('pAvatars').querySelectorAll('.av-opt').forEach(el => el.onclick = () => {
     if(el.classList.contains('locked')){ toast(el.dataset.lvl === 'Coffre' ? 'Se trouve dans les coffres' : `Débloqué au ${el.dataset.lvl.replace('Niv.', 'niveau')}`); return; }
@@ -1957,36 +2120,95 @@ function shopItems(list, owned, equipped, kind){
     let btn;
     if(eq) btn = `<button class="btn sm dark" disabled>Équipé</button>`;
     else if(own) btn = `<button class="btn sm" data-eq="${kind}:${x.id}">Équiper</button>`;
-    else if(x.src === 'season') btn = `<button class="btn sm dark" disabled>${s.ic} Palier ${kind === 'skin' ? 5 : 9}</button>`;
+    else if(x.src === 'season') btn = `<button class="btn sm dark" disabled>${s.ic} Palier ${kind === 'skin' ? TIER_SKIN : TIER_THEME}</button>`;
     else if(x.src === 'chest') btn = `<button class="btn sm dark" disabled>Coffre rare</button>`;
+    else if(x.src === 'daily') btn = `<button class="btn sm dark" disabled>Boutique du jour</button>`;
     else btn = `<button class="btn sm" data-buy="${kind}:${x.id}" ${canPay(x.cur, x.price) ? '' : 'disabled'}>${priceTag(x.cur, x.price)}</button>`;
     return `<div class="item inset">${prev}<b>${x.name}</b>${btn}</div>`;
   }).join('');
 }
+let shopTab = 'fixed';
+const fmtHM = ms => { const m = Math.max(1, Math.ceil(ms / 60000)); return `${Math.floor(m / 60)} h ${pad2(m % 60)}`; };
+function findItem(kind, id){
+  if(kind === 'decor') return DECORS.find(x => x.id === id);
+  const k = kind === 'skin' ? 'skins' : 'themes', all = kind === 'skin' ? ALL_SKINS : ALL_THEMES;
+  return all.find(x => x.id === id) || ownedDaily(k).find(x => x.id === id) || dailyShop()[k].find(x => x.id === id);
+}
+function dailyCards(list, kind){
+  const owned = kind === 'skin' ? P.skins : P.themes, eqd = kind === 'skin' ? P.skin : P.theme;
+  return list.map(x => {
+    const own = owned.includes(x.id), eq = eqd === x.id;
+    const btn = eq ? `<button class="btn sm dark" disabled>Équipé</button>` : own ? `<button class="btn sm" data-eq="${kind}:${x.id}">Équiper</button>`
+      : `<button class="btn sm" data-buy="${kind}:${x.id}" ${canPay(x.cur, x.price) ? '' : 'disabled'}>${priceTag(x.cur, x.price)}</button>`;
+    return `<div class="item inset"><span class="rar r-${x.rar}">${x.rar}</span>${kind === 'skin' ? skinPrev(x) : themePrev(x)}<b>${x.name}</b>${btn}</div>`;
+  }).join('');
+}
 function renderShop(){
-  $('shopSkins').innerHTML = shopItems(ALL_SKINS, P.skins, P.skin, 'skin');
-  $('shopThemes').innerHTML = shopItems(ALL_THEMES, P.themes, P.theme, 'theme');
+  document.querySelectorAll('#shopTabs .chip').forEach(c => c.classList.toggle('on', c.dataset.tab === shopTab));
+  ['fixed','daily','legend'].forEach(t => $('shop-' + t).classList.toggle('off', t !== shopTab));
+  if(shopTab === 'daily' && P.shopSeen !== dkey()){ P.shopSeen = dkey(); save(); updateBadges(); }
   const packs = [{n:1,price:25,cur:'coins'},{n:3,price:60,cur:'coins'},{n:10,price:3,cur:'gems'}];
-  $('shopHints').innerHTML = packs.map((h,i) => `<div class="item inset"><div style="font-size:40px;line-height:70px;height:70px">🔍</div><b>${h.n} indice${h.n>1?'s':''}</b>
-      <button class="btn sm" data-hint="${i}" ${canPay(h.cur,h.price) ? '' : 'disabled'}>${priceTag(h.cur,h.price)}</button></div>`).join('')
-    + `<div class="item inset"><div style="font:400 40px/70px 'Lilita One';height:70px;color:var(--gold-l)">${P.hints}</div><b>En réserve</b><small style="color:var(--tan-d)">Les indices révèlent les prochaines cases</small></div>`;
+  if(shopTab === 'fixed'){
+    $('shopSkins').innerHTML = shopItems([...ALL_SKINS, ...ownedDaily('skins')], P.skins, P.skin, 'skin');
+    $('shopThemes').innerHTML = shopItems([...ALL_THEMES, ...ownedDaily('themes')], P.themes, P.theme, 'theme');
+    $('shopHints').innerHTML = packs.map((h,i) => `<div class="item inset"><div style="font-size:40px;line-height:70px;height:70px">🔍</div><b>${h.n} indice${h.n>1?'s':''}</b>
+        <button class="btn sm" data-hint="${i}" ${canPay(h.cur,h.price) ? '' : 'disabled'}>${priceTag(h.cur,h.price)}</button></div>`).join('')
+      + `<div class="item inset"><div style="font:400 40px/70px 'Lilita One';height:70px;color:var(--gold-l)">${P.hints}</div><b>En réserve</b><small style="color:var(--tan-d)">Les indices révèlent les prochaines cases</small></div>`;
+  } else if(shopTab === 'daily'){
+    const d = dailyShop();
+    $('dailyHead').innerHTML = `<div><b>Arrivage du jour</b><small>Six pièces uniques, générées pour aujourd’hui. Ce que tu achètes reste à toi.</small></div><div class="cd" id="shopCd">⏳ ${fmtHM(msToMidnight())}</div>`;
+    $('dailySkins').innerHTML = dailyCards(d.skins, 'skin');
+    $('dailyThemes').innerHTML = dailyCards(d.themes, 'theme');
+  } else {
+    const none = `<div class="decor none ${P.decor ? '' : 'eq'}"><div class="shot" style="cursor:default"></div><b>Ciel nocturne</b><small>Le décor d’origine.</small>
+      ${P.decor ? '<button class="btn sm" data-eq="decor:">Équiper</button>' : '<button class="btn sm dark" disabled>Équipé</button>'}</div>`;
+    $('shopDecors').innerHTML = none + DECORS.map(x => {
+      const own = P.decors.includes(x.id), eq = P.decor === x.id;
+      const btn = eq ? `<button class="btn sm dark" disabled>Équipé</button>` : own ? `<button class="btn sm" data-eq="decor:${x.id}">Équiper</button>`
+        : `<button class="btn sm" data-buy="decor:${x.id}" ${canPay('gems', x.price) ? '' : 'disabled'}>${priceTag('gems', x.price)}</button>`;
+      return `<div class="decor ${eq ? 'eq' : ''}"><button class="shot" data-prev="${x.id}" aria-label="Aperçu ${x.name}"><img src="bg/${x.id}-t.webp" alt="" loading="lazy"><span class="tag">LÉGENDAIRE</span></button>
+        <b>${x.name}</b><small>${x.desc}</small>${btn}</div>`;
+    }).join('');
+  }
   const shop = $('s-shop');
   shop.querySelectorAll('[data-eq]').forEach(b => b.onclick = () => {
-    const [k, id] = b.dataset.eq.split(':'); if(k === 'skin') P.skin = id; else P.theme = id;
-    save(); applyCosmetics(); renderShop(); if(G) render(); tone(800,.06,'triangle',.05); toast(k === 'skin' ? 'Traînée équipée' : 'Plateau équipé');
+    const [k, id] = b.dataset.eq.split(':');
+    if(k === 'skin') P.skin = id; else if(k === 'theme') P.theme = id; else P.decor = id || null;
+    save(); applyCosmetics(); if(k === 'decor') applyDecor(); renderShop(); if(G) render(); tone(800,.06,'triangle',.05);
+    toast(k === 'skin' ? 'Traînée équipée' : k === 'theme' ? 'Plateau équipé' : 'Décor équipé');
   });
   shop.querySelectorAll('[data-buy]').forEach(b => b.onclick = () => {
-    const [k, id] = b.dataset.buy.split(':'); const x = (k === 'skin' ? ALL_SKINS : ALL_THEMES).find(y => y.id === id);
-    if(!x || !canPay(x.cur, x.price)) return;
-    pay(x.cur, x.price);
-    if(k === 'skin'){ P.skins.push(id); P.skin = id; } else { P.themes.push(id); P.theme = id; }
-    applyCosmetics(); sfx.buy(); buzz(20); toast(`${x.name} acheté !`); afterEvent(); renderShop();
+    const [k, id] = b.dataset.buy.split(':'), x = findItem(k, id);
+    if(!x) return;
+    const cur = k === 'decor' ? 'gems' : x.cur;
+    if(!canPay(cur, x.price)) return;
+    const doBuy = () => {
+      if(!canPay(cur, x.price)) return;
+      pay(cur, x.price);
+      if(k === 'decor'){ P.decors.push(id); P.decor = id; applyDecor(); }
+      else {
+        const key = k === 'skin' ? 'skins' : 'themes';
+        if(x.src === 'daily' && !ownedDaily(key).some(y => y.id === id)){ const {price, cur:_, rar, ...def} = x; P.dailyItems[key].push(def); }
+        if(k === 'skin'){ P.skins.push(id); P.skin = id; } else { P.themes.push(id); P.theme = id; }
+      }
+      applyCosmetics(); sfx.buy(); buzz(20); toast(`${x.name} acheté !`); if(k === 'decor') confetti(60); afterEvent(); renderShop();
+    };
+    if(k === 'decor') confirmBox('DÉCOR LÉGENDAIRE', `Acheter « ${x.name} » pour ${x.price} gemmes ?`, doBuy); else doBuy();
+  });
+  shop.querySelectorAll('[data-prev]').forEach(b => b.onclick = () => {
+    const x = DECORS.find(y => y.id === b.dataset.prev); if(!x) return;
+    const own = P.decors.includes(x.id);
+    modal({plaque:x.name, body:`<img class="prev-big" src="bg/${x.id}-l.webp" alt="Aperçu du décor ${x.name}"><p class="msg">${x.desc}.</p>`,
+      actions: own || P.decor === x.id ? [{label:'Fermer', cls:'dark'}] : [{label:'Fermer', cls:'dark'}, {label:`${x.price} gemmes`, fn:() => { const bb = shop.querySelector(`[data-buy="decor:${x.id}"]`); bb && !bb.disabled ? bb.click() : toast('Pas assez de gemmes'); }}]});
   });
   shop.querySelectorAll('[data-hint]').forEach(b => b.onclick = () => {
     const h = packs[+b.dataset.hint]; if(!canPay(h.cur,h.price)) return;
     pay(h.cur,h.price); P.hints += h.n; sfx.buy(); toast(`+${h.n} indice${h.n>1?'s':''}`); afterEvent(); renderShop();
   });
 }
+document.querySelectorAll('#shopTabs .chip').forEach(c => c.onclick = () => { shopTab = c.dataset.tab; tone(700,.05,'triangle',.04); renderShop(); });
+setInterval(() => { const el = $('shopCd'); if(el && screen === 'shop'){ if(SHOP_DAY && SHOP_DAY.date !== dkey()) renderShop(); else el.textContent = `⏳ ${fmtHM(msToMidnight())}`; } }, 30000);
+matchMedia('(orientation:portrait)').addEventListener?.('change', () => { if(P.decor) applyDecor(); });
 
 /* Options */
 function renderOptions(){
@@ -2004,7 +2226,7 @@ document.querySelectorAll('[data-opt]').forEach(el => {
   el.onclick = f; el.onkeydown = e => { if(e.key === ' ' || e.key === 'Enter'){ e.preventDefault(); f(); } };
 });
 $('optReset').onclick = () => confirmBox('RÉINITIALISER', 'Toute ta progression (niveau, XP, pièces, gemmes, cosmétiques, quêtes, saison et succès) sera effacée. Continuer ?', () => {
-  P = defaults(); save(); applyCosmetics(); G = null; TA.active = false; Music.stop(); updateHUD(); renderOptions(); toast('Progression réinitialisée');
+  P = defaults(); save(); applyCosmetics(); applyDecor(); G = null; TA.active = false; Music.stop(); updateHUD(); renderOptions(); toast('Progression réinitialisée');
 });
 document.addEventListener('pointerdown', () => { if(P.opts.music && !Music.on) Music.start(); }, {once:false, passive:true});
 
@@ -2012,7 +2234,7 @@ document.addEventListener('pointerdown', () => { if(P.opts.music && !Music.on) M
    Démarrage
    ===================================================== */
 $('heroRibbon').innerHTML = ribbon('ZIP', 62);
-ensureQuests(); ensureSeason(); applyCosmetics(); updateHUD(); renderMenuInfo();
+ensureQuests(); ensureSeason(); applyCosmetics(); applyDecor(); updateHUD(); renderMenuInfo();
 })();
 </script>
 <script>
